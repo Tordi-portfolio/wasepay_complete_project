@@ -1,0 +1,187 @@
+{% extends 'base.html' %}
+
+{% block title %}Wallet Addresses | WasePay{% endblock %}
+
+{% block content %}
+<style>
+  .wallet-container {
+    max-width: 800px;
+    margin: 10px auto;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+
+  .wallet-header {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 30px;
+    font-weight: bold;
+    color: #333;
+  }
+
+  .wallet-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    background: #f9f9f9;
+    padding: 15px 20px;
+    border-radius: 8px;
+  }
+
+  .wallet-label {
+    font-weight: 600;
+    flex: 1 1 150px;
+    color: #222;
+  }
+
+  .wallet-address {
+    flex: 1 1 100%;
+    word-break: break-all;
+    color: #555;
+    margin-top: 10px;
+  }
+
+  .copy-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.3s ease;
+  }
+
+  .copy-btn:hover {
+    background-color: #0056b3;
+  }
+
+  .copied-text {
+    margin-left: 10px;
+    color: green;
+    font-size: 13px;
+    display: none;
+  }
+
+  @media (min-width: 600px) {
+    .wallet-row {
+      flex-wrap: nowrap;
+    }
+
+    .wallet-address {
+      flex: 2;
+      margin-top: 0;
+    }
+  }
+</style>
+
+<style>
+  .dashboard-container {
+    max-width: 500px;
+    margin: 30px auto;
+    padding: 20px 25px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  .dashboard-container h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #007bff;
+    font-weight: 600;
+  }
+
+  .dashboard-container .balance {
+    font-size: 18px;
+    margin: 10px 0;
+    color: #333;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-left: 5px solid #007bff;
+    border-radius: 8px;
+  }
+
+  @media screen and (max-width: 600px) {
+    .dashboard-container {
+      padding: 15px 20px;
+    }
+
+    .dashboard-container h2 {
+      font-size: 20px;
+    }
+
+    .dashboard-container .balance {
+      font-size: 16px;
+    }
+  }
+</style>
+
+
+
+<div class="wallet-container">
+  <div class="wallet-header">Your Personal Wallet Addresses</div>
+
+
+  <div class="dashboard-container">
+    <h2 style="text-align: left"><span class="username">Total Asset</span></h2>
+    <p class="balance" style="text-align: left">USDT: ${{ wallet.balance }}</p>
+    <p class="balance" style="text-align: left">ETH: {{ wallet.eth }}</p>
+    <p class="balance" style="text-align: left">SOL: {{ wallet.solana }}</p>
+    <p class="balance" style="text-align: left">TON: {{ wallet.ton }}</p>
+  </div>
+
+  <div class="wallet-row">
+    <div class="wallet-label">USDT (BEP20):</div>
+    <p class="balance" style="text-align: left">USDT: ${{ wallet.balance }}</p>
+    <div class="wallet-address" id="usdt-address">0x8D0A29BA2426C8cD4C37b8D948f9E9d7d7706575</div>
+    <button class="copy-btn" onclick="copyToClipboard('usdt-address', this)">Copy</button>
+    <span class="copied-text">Copied!</span>
+  </div>
+
+  <div class="wallet-row">
+    <div class="wallet-label">Ethereum (ETH):</div>
+    <p class="balance" style="text-align: left">ETH: {{ wallet.eth }}</p>
+    <div class="wallet-address" id="eth-address">0x8D0A29BA2426C8cD4C37b8D948f9E9d7d7706575</div>
+    <button class="copy-btn" onclick="copyToClipboard('eth-address', this)">Copy</button>
+    <span class="copied-text">Copied!</span>
+  </div>
+
+  <div class="wallet-row">
+    <div class="wallet-label">TON (TON):</div>
+    <p class="balance" style="text-align: left">SOL: {{ wallet.ton }}</p>
+    <div class="wallet-address" id="ton-address">UQDtWKBrwC53kcX3H4aOAiiQESXLqm0H0DMUWHCDgZp0fBaq</div>
+    <button class="copy-btn" onclick="copyToClipboard('ton-address', this)">Copy</button>
+    <span class="copied-text">Copied!</span>
+  </div>
+
+  <div class="wallet-row">
+    <div class="wallet-label">Solana (SOL):</div>
+    <p class="balance" style="text-align: left">SOL: {{ wallet.solana }}</p>
+    <div class="wallet-address" id="sol-address">GLFY4BgXCJwxfgUrLUk9ZBSbpvJhMxJ43ssjMEkk5HCF</div>
+    <button class="copy-btn" onclick="copyToClipboard('sol-address', this)">Copy</button>
+    <span class="copied-text">Copied!</span>
+  </div>
+</div>
+
+<script>
+  function copyToClipboard(id, btn) {
+    const text = document.getElementById(id).innerText;
+    navigator.clipboard.writeText(text).then(() => {
+      // Show "Copied!" message
+      const copiedText = btn.nextElementSibling;
+      copiedText.style.display = 'inline';
+
+      // Hide after 2 seconds
+      setTimeout(() => {
+        copiedText.style.display = 'none';
+      }, 2000);
+    });
+  }
+</script>
+{% endblock %}

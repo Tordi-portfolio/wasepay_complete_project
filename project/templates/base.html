@@ -1,0 +1,268 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}MySite{% endblock %}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <style>
+    /* RESET */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9fafb;
+      color: #333;
+    }
+
+    /* NAVBAR */
+    .responsive-header {
+      background-color: #1e40af;
+      color: white;
+      padding: 15px 0;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    .brand {
+      font-size: 24px;
+      font-weight: bold;
+      text-decoration: none;
+      color: white;
+    }
+
+    .menu-toggle {
+      font-size: 26px;
+      cursor: pointer;
+      display: none;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .nav-links li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-links li a:hover {
+      color: #a5c4ff;
+    }
+
+    /* MAIN CONTENT */
+    .main-content {
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    /* FOOTER */
+    .responsive-footer {
+      background-color: #111827;
+      color: #ccc;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      margin-top: 40px;
+    }
+
+    .responsive-footer p {
+      margin: 6px 0;
+    }
+
+    /* MESSAGE STYLES */
+    .custom-message {
+      max-width: 600px;
+      margin: 1rem auto;
+      padding: 1rem 1.5rem;
+      border-radius: 8px;
+      font-size: 1rem;
+      position: relative;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      color: #fff;
+      animation: fadeIn 0.4s ease-in-out;
+    }
+
+    .custom-message.success { background-color: #28a745; }
+    .custom-message.error { background-color: #dc3545; }
+    .custom-message.warning { background-color: #ffc107; color: #000; }
+    .custom-message.info { background-color: #17a2b8; }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      background: none;
+      border: none;
+      color: inherit;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* RESPONSIVE NAVIGATION */
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      .nav-links {
+        flex-direction: column;
+        background-color: #1e40af;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        display: none;
+        padding: 15px 0;
+        z-index: 1000;
+        align-items: flex-start;
+        padding-left: 20px;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .nav-links li {
+        text-align: left;
+        width: 100%;
+        padding: 10px 0;
+      }
+
+      .nav-links li a {
+        display: block;
+        width: 100%;
+      }
+    }
+    @media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    background-color: #1e40af;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    display: none;
+    padding: 10px 0;
+    z-index: 1000;
+    align-items: flex-start;
+    padding-left: 20px;
+    gap: 0.5rem;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-links li {
+    text-align: left;
+    width: 100%;
+    padding: 6px 0;
+  }
+
+  .nav-links li a {
+    display: block;
+    width: 100%;
+  }
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="responsive-header">
+    <div class="navbar-container">
+      <a href="{% url 'home' %}" class="brand">WASEPAY</a>
+      <div class="menu-toggle" onclick="toggleNav()">☰</div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="{% url 'home' %}">Home</a></li>
+        <li><a href="{% url 'price' %}">Price</a></li>
+        <li><a href="{% url 'chart' %}">Chart</a></li>
+        <li><a href="{% url 'invest_guide' %}">Invest Guide</a></li>
+        {% if user.is_authenticated %}
+          <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+          <li><a href="{% url 'selectpay' %}">Invest</a></li>
+          <li><a href="{% url 'rules' %}">Terms</a></li>
+          <li><a href="{% url 'services' %}">Services</a></li>
+          <li><a href="{% url 'wallet' %}">Wallet</a></li>
+          {% if user.is_superuser %}
+            <li><a href="{% url 'create_transaction' %}">➕ Create Transaction</a></li>
+            <li><a href="{% url 'transaction_list' %}">➕ Transaction List</a></li>
+            <li><a href="{% url 'selectpay' %}">➕ Deposit</a></li>
+            <li><a href="{% url 'my_transactions' %}">📄 My Transactions</a></li>
+          {% endif %}
+          <li><a href="#">Hi, {{ user.username }}</a></li>
+          <li><a href="{% url 'about' %}">About</a></li>
+          <li><a href="{% url 'withdraw' %}">Withdraw</a></li>
+          <li><a href="{% url 'logout' %}">Logout</a></li>
+        {% else %}
+          <li><a href="{% url 'services' %}">Services</a></li>
+          <li><a href="{% url 'about' %}">About</a></li>
+          <li><a href="{% url 'rules' %}">Terms</a></li>
+          <li><a href="{% url 'login' %}">Login</a></li>
+          <li><a href="{% url 'register' %}">Register</a></li>
+        {% endif %}
+      </ul>
+    </div>
+  </header>
+
+  <!-- Messages -->
+  {% if messages %}
+    {% for message in messages %}
+      <div class="custom-message {{ message.tags }}">
+        <strong>{{ message.tags|title }}:</strong> {{ message }}
+        <button class="close-btn" onclick="this.parentElement.style.display='none';">&times;</button>
+      </div>
+    {% endfor %}
+  {% endif %}
+
+  <!-- Main Content -->
+  <main class="main-content">
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- Footer -->
+  <footer class="responsive-footer">
+    <p>&copy; {% now "Y" %} Wasepay. All rights reserved.</p>
+    <p>Designed by Wasepay Dev Team</p>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    function toggleNav() {
+      const nav = document.getElementById('navLinks');
+      nav.classList.toggle('active');
+    }
+  </script>
+
+</body>
+</html>

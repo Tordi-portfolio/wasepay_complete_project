@@ -1,0 +1,166 @@
+{% extends 'base.html' %}
+
+{% block title %}Tordi Crypto{% endblock %}
+
+{% block content %}
+
+<style>
+
+    .payment-box {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.05);
+      width: 100%;
+      max-width: 420px;
+      text-align: center;
+    }
+
+    h2 {
+      color: #333;
+    }
+
+    img {
+      width: 60px;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      text-align: left;
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+
+    .wallet-address {
+      background-color: #f0f0f0;
+      padding: 10px;
+      border-radius: 6px;
+      word-break: break-all;
+      margin-top: 5px;
+      font-family: monospace;
+    }
+
+    .btn {
+      margin-top: 25px;
+      background-color: #25D366;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn:hover {
+      background-color: #1ebe57;
+    }
+  </style>
+</head>
+<body>
+
+<div class="payment-box">
+  <img src="https://cryptologos.cc/logos/tether-usdt-logo.png?v=026" alt="USDT Logo">
+  <h2>Deposit TON (ton)</h2>
+
+  <label for="amount">Enter Amount (TON)</label>
+  <input type="number" id="amount" placeholder="e.g. 100" required>
+
+  <label>Send To Wallet Address:</label>
+  <div class="wallet-address" id="wallet-address">
+    UQDtWKBrwC53kcX3H4aOAiiQESXLqm0H0DMUWHCDgZp0fBaq
+  </div>
+
+  <a id="whatsapp-link" class="btn" href="#" target="_blank">
+    Confirm via WhatsApp
+  </a>
+</div>
+
+<div class="payment-instructions">
+  <h3>📩 After Making Your Payment</h3>
+  <p>
+    To complete your deposit verification, please follow the steps below carefully:
+  </p>
+  <ul>
+    <li>📸 Take a clear <strong>screenshoot of your payment receipt</strong></li>
+    <li>👤 Include your <strong>username</strong></li>
+    <li>📧 Include your <strong>registered email address</strong></li>
+  </ul>
+  <p>
+    Send the above details to our admin via WhatsApp or email for manual confirmation.
+  </p>
+  <div class="note">
+    ⚠️ Payments without proper confirmation details may experience delays in approval.
+  </div>
+</div>
+
+<style>
+  .payment-instructions {
+    background-color: #f0f6ff;
+    border-left: 5px solid #007bff;
+    padding: 20px;
+    margin-top: 30px;
+    border-radius: 8px;
+    max-width: 700px;
+    font-family: Arial, sans-serif;
+    color: #333;
+  }
+
+  .payment-instructions h3 {
+    margin-top: 0;
+    color: #0056b3;
+  }
+
+  .payment-instructions ul {
+    padding-left: 20px;
+    margin: 10px 0;
+  }
+
+  .payment-instructions ul li {
+    margin-bottom: 10px;
+  }
+
+  .note {
+    background-color: #fff3cd;
+    border-left: 4px solid #ffc107;
+    padding: 12px;
+    margin-top: 20px;
+    border-radius: 5px;
+    color: #856404;
+    font-size: 14px;
+  }
+</style>
+
+<script>
+  const confirmLink = document.getElementById("whatsapp-link"); // You can rename this ID later
+  const amountInput = document.getElementById("amount");
+
+  const walletAddress = document.getElementById("wallet-address").innerText;
+  const telegramUsername = "tordi27"; // Username without @
+
+  confirmLink.addEventListener("click", function(e) {
+    const amount = amountInput.value.trim();
+    if (!amount) {
+      alert("Please enter the amount before confirming.");
+      e.preventDefault();
+      return;
+    }
+
+    const message = encodeURIComponent(`Hello, I have sent a payment of ${amount} ton (TON) to the wallet address: ${walletAddress}`);
+    const url = `https://t.me/${telegramUsername}?text=${message}`;
+    confirmLink.href = url;
+  });
+</script>
+
+{% endblock %}

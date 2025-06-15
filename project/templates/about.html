@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<body class="bg-gray-100 text-gray-800 font-sans">
+
+    <!-- Header -->
+    <header class="bg-blue-900 text-white py-6 shadow-md">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-4xl font-bold">About WasePay</h1>
+            <p class="mt-2 text-lg">Your trusted partner in crypto investment and growth</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-10 space-y-10">
+
+        <!-- Our Story -->
+        <section class="bg-white p-8 rounded-xl shadow-md">
+            <h2 class="text-3xl font-bold text-blue-800 mb-4">Our Story</h2>
+            <p class="text-lg leading-relaxed">
+                WasePay officially launched on <strong>March 13, 2025</strong>, as a visionary crypto investment platform
+                designed to provide high-yield weekly returns with a smart halving model to sustain long-term growth.
+                We’ve been committed from day one to giving investors the power of consistent weekly profits, starting at
+                <span class="font-semibold text-green-600">50% ROI every 7 days</span> from the day of payment.
+            </p>
+        </section>
+
+        <!-- ROI Strategy -->
+        <section class="bg-white p-8 rounded-xl shadow-md">
+            <h2 class="text-3xl font-bold text-blue-800 mb-4">Our ROI Strategy</h2>
+            <p class="text-lg leading-relaxed mb-4">
+                WasePay uses a unique compounding return model that rewards early adopters generously while sustaining
+                long-term viability. Here's how it works:
+            </p>
+            <ul class="list-disc pl-6 space-y-2 text-lg">
+                <li><strong>Launch Phase:</strong> From March 13, investors earned <span class="text-green-600 font-semibold">50% ROI weekly</span>.</li>
+                <li><strong>First Halving:</strong> After 4 months (July 13), ROI reduces by 2% every cycle, bringing it to <span class="text-yellow-600 font-semibold">25%</span>.</li>
+                <li><strong>Continued Halving:</strong> Every 4 months thereafter, ROI halves again (e.g., to 12.5%, then 6.25%).</li>
+                <li><strong>Final Fixed ROI:</strong> Once ROI reaches <span class="text-red-600 font-semibold">6%</span>, it remains fixed to ensure long-term sustainability and scalability.</li>
+            </ul>
+            <p class="mt-4 text-lg">
+                This structured reduction encourages early participation and ensures long-term profitability for the system.
+            </p>
+        </section>
+
+        <!-- Why Join WasePay Early -->
+        <section class="bg-white p-8 rounded-xl shadow-md">
+            <h2 class="text-3xl font-bold text-blue-800 mb-4">Why Join WasePay Early?</h2>
+            <p class="text-lg leading-relaxed mb-4">
+                Timing is everything in investment, and with WasePay, the earlier you join, the higher your returns.
+                Here's why early investors are the big winners:
+            </p>
+            <div class="grid md:grid-cols-2 gap-6 text-lg">
+                <div>
+                    <h3 class="font-bold text-blue-700 mb-2">🔥 Higher ROI</h3>
+                    <p>Early birds receive the highest ROI before reductions begin. Secure your spot before the halving cycle cuts it down.</p>
+                </div>
+                <div>
+                    <h3 class="font-bold text-blue-700 mb-2">👥 Less Competition</h3>
+                    <p>Right now, the network is not overcrowded, so the payout pool is more robust. More users later means slower growth per user.</p>
+                </div>
+                <div>
+                    <h3 class="font-bold text-blue-700 mb-2">📈 Compounding Profits</h3>
+                    <p>Reinvest your weekly returns and watch your earnings multiply before halving begins. Compound smarter, not harder.</p>
+                </div>
+                <div>
+                    <h3 class="font-bold text-blue-700 mb-2">🛡️ Stable, Transparent System</h3>
+                    <p>WasePay is designed with a transparent payout strategy and a long-term vision. Early members help shape the future.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Vision & Mission -->
+        <section class="bg-white p-8 rounded-xl shadow-md">
+            <h2 class="text-3xl font-bold text-blue-800 mb-4">Our Mission & Vision</h2>
+            <p class="text-lg leading-relaxed">
+                At WasePay, our mission is to empower everyday investors by providing a safe, consistent, and scalable
+                crypto-based return system. We aim to make crypto investing simple, predictable, and rewarding.
+            </p>
+            <p class="mt-4 text-lg">
+                Our vision is to build one of the most trusted decentralized investment platforms where trust, reward,
+                and transparency go hand in hand.
+            </p>
+        </section>
+
+        <!-- Call to Action -->
+        <section class="bg-blue-800 text-white p-10 rounded-xl shadow-md text-center">
+            <h2 class="text-3xl font-bold mb-4">🚀 Don’t Wait Until It's Too Late</h2>
+            <p class="text-xl mb-6">Join WasePay now and take advantage of the <span class="font-semibold">highest ROI before the system crowds up and rates drop.</span></p>
+            <a href="/signup" class="inline-block bg-yellow-400 text-black font-semibold py-3 px-6 rounded-xl shadow hover:bg-yellow-300 transition">
+                Get Started Today
+            </a>
+        </section>
+
+    </main>
+{% endblock %}

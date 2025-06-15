@@ -1,0 +1,161 @@
+{% extends 'base.html' %}
+
+{% block title %}Customer Service - WasePay{% endblock %}
+
+{% block content %}
+<style>
+    .customer-service {
+        max-width: 960px;
+        margin: 50px auto;
+        padding: 40px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+        font-family: 'Segoe UI', sans-serif;
+        color: #2c3e50;
+        line-height: 1.7;
+    }
+
+    .customer-service h1 {
+        font-size: 2.5rem;
+        color: #2980b9;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .customer-service h2 {
+        font-size: 1.8rem;
+        color: #2c3e50;
+        margin-top: 40px;
+        padding-left: 10px;
+        border-left: 4px solid #3498db;
+    }
+
+    .customer-service h3 {
+        font-size: 1.3rem;
+        color: #34495e;
+        margin-top: 20px;
+    }
+
+    .customer-service p {
+        margin-bottom: 16px;
+    }
+
+    .faq {
+        margin-top: 30px;
+    }
+
+    .faq-item {
+        margin-bottom: 25px;
+    }
+
+    .contact-form {
+        margin-top: 40px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    input, textarea {
+        width: 100%;
+        padding: 10px;
+        font-size: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+    }
+
+    button {
+        padding: 12px 20px;
+        font-size: 1rem;
+        background-color: #2980b9;
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #1f6391;
+    }
+
+    .contact-info {
+        margin-top: 30px;
+        font-size: 0.95rem;
+        color: #555;
+    }
+
+    .contact-info a {
+        color: #2980b9;
+        text-decoration: none;
+    }
+
+    .contact-info a:hover {
+        text-decoration: underline;
+    }
+</style>
+
+<div class="customer-service">
+    <h1>Customer Service</h1>
+    <p>Welcome to WasePay’s Customer Service page. We are here to assist you with your questions, concerns, or feedback. Whether you're a new investor or a long-time user, we value your satisfaction and trust in our platform.</p>
+
+    <h2>Frequently Asked Questions (FAQs)</h2>
+    <div class="faq">
+        <div class="faq-item">
+            <h3>1. How do I invest on WasePay?</h3>
+            <p>Log in to your dashboard, select your investment amount (minimum $100), and follow the on-screen prompts to confirm your transaction.</p>
+        </div>
+        <div class="faq-item">
+            <h3>2. When will I receive my 50% return?</h3>
+            <p>Returns are credited after your selected investment duration—this is typically 7, 14, or 30 days depending on your plan.</p>
+        </div>
+        <div class="faq-item">
+            <h3>3. How do I withdraw my earnings?</h3>
+            <p>Go to your dashboard and click the "Withdraw" button. Ensure your wallet or bank information is correct. Withdrawals take 24–72 business hours to process.</p>
+        </div>
+        <div class="faq-item">
+            <h3>4. I made a mistake during investment. Can I get a refund?</h3>
+            <p>All investments are final. Refunds are only available in cases of verified system error. Please contact support if you're unsure.</p>
+        </div>
+        <div class="faq-item">
+            <h3>5. How do I reach customer service?</h3>
+            <p>You can use the contact form below or email us directly at <a href="mailto:wasepay@gmail.com">wasepay@gmail.com</a>.</p>
+        </div>
+    </div>
+
+    <h2>Contact Us</h2>
+    <p>If your question is not answered above, feel free to contact us using the form below:</p>
+
+    <form method="post" class="contact-form">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="name">Your Full Name</label>
+            <input type="text" name="name" id="name" required>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Your Email Address</label>
+            <input type="email" name="email" id="email" required>
+        </div>
+
+        <div class="form-group">
+            <label for="message">Your Message or Inquiry</label>
+            <textarea name="message" id="message" rows="6" required></textarea>
+        </div>
+
+        <button type="submit">Send Message</button>
+    </form>
+
+    <div class="contact-info">
+        <p><strong>Support Email:</strong> <a href="mailto:support@wasepay.com">support@wasepay.com</a></p>
+        <p><strong>Website:</strong> <a href="https://www.wasepay.com" target="_blank">www.wasepay.com</a></p>
+        <p><strong>Business Hours:</strong> Monday – Friday, 9AM – 5PM (GMT)</p>
+    </div>
+</div>
+{% endblock %}

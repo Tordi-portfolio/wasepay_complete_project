@@ -1,0 +1,157 @@
+{% extends 'base.html' %}
+
+{% block title %}WasePay{% endblock %}
+
+{% block content %}
+  {% load humanize %}
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f6f8;
+      margin: 0;
+
+    }
+
+    .crypto-container {
+      max-width: 1200px;
+      margin: auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 30px;
+    }
+
+    form {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    form input[type="text"] {
+      padding: 10px;
+      width: 80%;
+      max-width: 300px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    form button {
+      padding: 10px 15px;
+      margin-left: 10px;
+      background-color: #007bff;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    form button:hover {
+      background-color: #0056b3;
+    }
+
+    .table-wrapper {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      min-width: 700px;
+    }
+
+    th, td {
+      padding: 14px 18px;
+      border: 1px solid #eee;
+      text-align: center;
+    }
+
+    th {
+      background-color: #007bff;
+      color: white;
+      font-weight: 600;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    tr:hover {
+      background-color: #e6f2ff;
+    }
+
+    .no-results {
+      text-align: center;
+      font-weight: bold;
+      padding: 20px;
+      color: red;
+    }
+
+    @media screen and (max-width: 600px) {
+      h2 {
+        font-size: 20px;
+      }
+
+      form input[type="text"] {
+        width: 100%;
+        margin-bottom: 10px;
+      }
+
+      form button {
+        width: 100%;
+        margin-left: 0;
+      }
+    }
+  </style>
+
+  <div class="crypto-container">
+    <h2>🎯 Live Crypto Prices</h2>
+
+    <!-- 🔍 SEARCH FORM -->
+    <form method="get">
+      <input type="text" name="q" placeholder="Search by name or code..." value="{{ query|default_if_none:'' }}">
+      <button type="submit">Search</button>
+    </form>
+
+    <!-- 💰 TABLE SECTION -->
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Price (USD)</th>
+            <!-- <th>Market Cap</th> -->
+            <th>24h Volume</th>
+            <!-- <th>All-Time High</th> -->
+          </tr>
+        </thead>
+        <tbody>
+          {% for coin in data %}
+          <tr>
+            <td>{{ coin.name }} ({{ coin.code }})</td>
+            <td>{{ coin.price }}</td>
+            <!-- <td>${{ coin.market_cap|intcomma }}</td> -->
+            <td>${{ coin.volume_24h|intcomma }}</td>
+            <!-- <td>${{ coin.ath|intcomma }}</td> -->
+          </tr>
+          {% empty %}
+          <tr>
+            <td colspan="5" class="no-results">No coins matched your search.</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+{% endblock %}

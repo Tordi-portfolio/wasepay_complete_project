@@ -1,0 +1,228 @@
+{% extends 'base.html' %}
+
+{% block title %}WasePay{% endblock %}
+
+{% block content %}
+<section class="home-hero">
+  <div class="home-container">
+    <h1>Welcome to <span class="highlight">WASEPAY</span></h1>
+    {% if user.is_authenticated %}
+      <p>Hello, <strong>{{ user.username }}</strong>! You're logged in.</p>
+      <a href="{% url 'logout' %}" class="btn">Logout</a>
+    {% else %}
+      <p>Create an account or log in to get started.</p>
+      <a href="{% url 'register' %}" class="btn">Register</a>
+      <a href="{% url 'login' %}" class="btn-outline">Login</a>
+    {% endif %}
+  </div>
+
+  
+<!-- Hero Section -->
+<section class="hero text-center">
+  <div class="container">
+      <h1 class="display-4 fw-bold">Welcome to WasePay</h1>
+      <p class="lead">Invest Smarter. Earn Faster. 50% Return on Every Crypto Investment</p>
+      {% if user.is_authenticated %}
+      <a href="{% url 'dashboard' %}" class="btn btn-light btn-lg mt-3">Get Started</a>
+    {% else %}
+      <a href="{% url 'register' %}" class="btn btn-light btn-lg mt-3">Get Started</a>
+    {% endif %}
+  </div>
+</section>
+
+<!-- What Is WasePay -->
+<section class="section bg-white text-center">
+  <div class="container">
+      <h2 class="section-title">What Is <span class="highlight">WasePay</span>?</h2>
+      <p class="lead">WasePay is a digital platform that allows you to invest in top cryptocurrencies and earn a guaranteed <strong>50% profit</strong> on every investment.</p>
+      <p class="mb-0">We support stable, high-performing assets including USDT, ETH, TON, and SOLANA — making it easier than ever to grow your wealth securely and efficiently.</p>
+  </div>
+</section>
+
+<!-- Investment Breakdown -->
+<section class="section bg-light text-center">
+  <div class="container">
+      <h2 class="section-title">Earn 50% on Every Investment</h2>
+      <div class="row">
+          <div class="col-md-4">
+              <div class="card p-4">
+                  <h4>Invest $100</h4>
+                  <p class="lead">Get $150</p>
+              </div>
+          </div>
+          <div class="col-md-4">
+              <div class="card p-4">
+                  <h4>Invest $500</h4>
+                  <p class="lead">Get $750</p>
+              </div>
+          </div>
+          <div class="col-md-4">
+              <div class="card p-4">
+                  <h4>Invest $1000</h4>
+                  <p class="lead">Get $1500</p>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+
+
+<!-- Features -->
+<section class="section bg-white">
+  <div class="container">
+      <h2 class="section-title text-center">Why Choose WasePay?</h2>
+      <div class="row text-center">
+          <div class="col-md-4">
+              <div class="mb-3 feature-icon">🔒</div>
+              <h5>Safe & Secure</h5>
+              <p>Enterprise-level encryption and secure wallet protection.</p>
+          </div>
+          <div class="col-md-4">
+              <div class="mb-3 feature-icon">📈</div>
+              <h5>50% ROI Guaranteed</h5>
+              <p>High-yield plans that deliver consistent and transparent profits.</p>
+          </div>
+          <div class="col-md-4">
+              <div class="mb-3 feature-icon">🖥️</div>
+              <h5>Live Dashboard</h5>
+              <p>Track your investments, profits, and payouts in real-time.</p>
+          </div>
+      </div>
+  </div>
+</section>
+
+<!-- How It Works -->
+<section class="section bg-light text-center">
+  <div class="container">
+      <h2 class="section-title">How It Works</h2>
+      <div class="row">
+          <div class="col-md-3">
+              <h5>1. Create Account</h5>
+              <p>Sign up in seconds and access your dashboard.</p>
+          </div>
+          <div class="col-md-3">
+              <h5>2. Choose a Plan</h5>
+              <p>Select a crypto asset and enter your investment amount.</p>
+          </div>
+          <div class="col-md-3">
+              <h5>3. Earn Profit</h5>
+              <p>Receive 50% ROI over the selected duration.</p>
+          </div>
+          <div class="col-md-3">
+              <h5>4. Withdraw Earnings</h5>
+              <p>Get paid directly to your crypto wallet or exchange.</p>
+          </div>
+      </div>
+  </div>
+</section>
+
+<!-- Call to Action -->
+<section class="section bg-primary text-white text-center">
+  <div class="container">
+      <h2 class="mb-3">Ready to Start Investing?</h2>
+      <p class="lead mb-4">Sign up today and make your first crypto investment with 50% profit guaranteed.</p>
+      {% if user.is_authenticated %}
+      <a href="{% url 'dashboard' %}" class="btn btn-outline-light btn-lg ms-2">View Plans</a>
+      {% else %}
+      <a href="{% url 'register' %}" class="btn btn-light btn-lg">Create Account</a>
+      {% endif %}
+  </div>
+</section>
+
+</section>
+
+<style>
+  /* HOME PAGE STYLING */
+.home-hero {
+  background: linear-gradient(to right, #3b82f6, #60a5fa);
+  color: white;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.home-container {
+  max-width: 800px;
+  margin: auto;
+}
+
+.home-hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+}
+
+.home-hero .highlight {
+  color: #fff59d;
+}
+
+.home-hero p {
+  font-size: 1.2rem;
+  margin-bottom: 25px;
+}
+
+.btn, .btn-outline {
+  padding: 10px 20px;
+  font-size: 1rem;
+  margin: 0 10px;
+  border-radius: 5px;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+.btn {
+  background-color: #ffffff;
+  color: #1e3a8a;
+  font-weight: bold;
+}
+
+.btn:hover {
+  background-color: #f3f4f6;
+}
+
+.btn-outline {
+  border: 2px solid white;
+  color: white;
+}
+
+.btn-outline:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+</style>
+
+<style>
+  body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f8f9fa;
+  }
+  .hero {
+      background: linear-gradient(to right, #1e3c72, #2a5298);
+      color: white;
+      padding: 60px 0;
+  }
+  .section-title {
+      font-size: 2rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+  }
+  .highlight {
+      color: #2a5298;
+      font-weight: bold;
+  }
+  .btn-primary {
+      background-color: #2a5298;
+      border: none;
+  }
+  .feature-icon {
+      font-size: 2rem;
+      color: #2a5298;
+  }
+  .section {
+      padding: 60px 0;
+  }
+  footer {
+      background: #2a5298;
+      color: white;
+      padding: 20px 0;
+  }
+</style>
+{% endblock %}

@@ -1,0 +1,186 @@
+{% extends 'base.html' %}
+
+{% block title %}Invest in WasePay{% endblock %}
+
+{% block content %}
+<style>
+    .guide-container {
+        max-width: 1000px;
+        margin: 40px auto;
+        padding: 30px;
+        background: #ffffff;
+        border-radius: 20px;
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.07);
+        font-family: 'Segoe UI', sans-serif;
+        color: #333;
+    }
+
+    .guide-container h1,
+    .guide-container h2,
+    .guide-container h3 {
+        color: #004080;
+        margin-bottom: 15px;
+    }
+
+    .guide-container p,
+    .guide-container li {
+        line-height: 1.7;
+    }
+
+    .guide-container ul {
+        margin-left: 20px;
+        list-style-type: disc;
+    }
+
+    .crypto-section {
+        background: #f9f9f9;
+        border-left: 5px solid #004080;
+        padding: 20px;
+        border-radius: 10px;
+        margin-bottom: 30px;
+    }
+
+    .important {
+        background: #fff3cd;
+        padding: 10px;
+        border-left: 5px solid #ffc107;
+        margin: 15px 0;
+    }
+
+    .cta {
+        text-align: center;
+        background: #004080;
+        padding: 20px;
+        border-radius: 12px;
+        color: white;
+        margin-top: 30px;
+    }
+
+    .cta a {
+        color: #fff;
+        font-weight: bold;
+        text-decoration: underline;
+    }
+
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+    }
+
+    .table th,
+    .table td {
+        border: 1px solid #ccc;
+        padding: 12px;
+        text-align: center;
+    }
+
+    .table th {
+        background-color: #004080;
+        color: #fff;
+    }
+
+    a {
+        color: #006666;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+</style>
+
+<div class="guide-container">
+    <h1>📘 How to Invest in WasePay</h1>
+    <p>Welcome to WasePay! Follow this guide to invest using different cryptocurrencies: USDT (BEP20), ETH, SOL, or TON. Each section will walk you through wallet setup, funding, and making a deposit to WasePay.</p>
+
+    <div class="crypto-section">
+        <h2>🪙 Option 1: USDT (BEP20 - Binance Smart Chain)</h2>
+        <ul>
+            <li>Install <strong>Trust Wallet</strong>.</li>
+            <li>Buy or transfer <strong>USDT via BEP20 network</strong>.</li>
+            <li>On Trust Wallet → USDT → Send → Paste your WasePay BEP20 deposit address.</li>
+        </ul>
+        <div class="important">
+            ✅ Ensure you select <strong>BEP20</strong> network, not ERC20 or TRC20.
+        </div>
+    </div>
+
+    <div class="crypto-section">
+        <h2>💠 Option 2: Ethereum (ETH - ERC20)</h2>
+        <ul>
+            <li>Install <strong>MetaMask</strong> (browser extension or mobile app).</li>
+            <li>Fund it with ETH using <a href="https://www.binance.com" target="_blank">Binance</a> or any exchange.</li>
+            <li>Go to MetaMask → Send → Paste WasePay Ethereum address → Enter amount → Confirm.</li>
+        </ul>
+        <div class="important">
+            ✅ Use only the <strong>Ethereum Mainnet</strong> (ERC20) for ETH deposits.
+        </div>
+    </div>
+
+    <div class="crypto-section">
+        <h2>⚡ Option 3: Solana (SOL)</h2>
+        <ul>
+            <li>Install the <strong>Phantom Wallet</strong> (Chrome extension or app).</li>
+            <li>Fund it with SOL from an exchange like Binance.</li>
+            <li>Open Phantom → Send → Paste your WasePay SOL address → Confirm transaction.</li>
+        </ul>
+        <div class="important">
+            ✅ Send only <strong>SOL on the Solana Network</strong>. Do not send SPL tokens or use incorrect networks.
+        </div>
+    </div>
+
+    <div class="crypto-section">
+        <h2>🔵 Option 4: Toncoin (TON - TON Network)</h2>
+        <ul>
+            <li>Download <strong>Tonkeeper</strong> or use <strong>Telegram Wallet</strong>.</li>
+            <li>Buy or transfer TON to your wallet.</li>
+            <li>Go to Send → Paste your WasePay TON deposit address → Confirm.</li>
+        </ul>
+        <div class="important">
+            ✅ Use only the official <strong>TON network</strong> wallet and address.
+        </div>
+    </div>
+
+    <h2>📈 ROI Table (WasePay Profit Structure)</h2>
+    <table class="table">
+        <tr>
+            <th>Investment Period</th>
+            <th>ROI Every 7 Days</th>
+        </tr>
+        <tr>
+            <td>March 13 – July 13, 2025</td>
+            <td>50%</td>
+        </tr>
+        <tr>
+            <td>July 14 – Nov 13, 2025</td>
+            <td>25%</td>
+        </tr>
+        <tr>
+            <td>Nov 14 – Mar 13, 2026</td>
+            <td>12.5%</td>
+        </tr>
+        <tr>
+            <td>After March 13, 2026</td>
+            <td>6% (Fixed)</td>
+        </tr>
+    </table>
+
+    <h2>🧾 What to Do After Sending</h2>
+    <ul>
+        <li>Once blockchain confirms the transaction, your WasePay dashboard will update.</li>
+        <li>ROI starts counting automatically from the moment your deposit is confirmed.</li>
+        <li>You will be notified of your weekly ROI and can withdraw based on your plan.</li>
+    </ul>
+
+    <h2>📞 Support</h2>
+    <ul>
+        <li>Telegram: <a href="https://t.me/tordi24" target="_blank">@YourTelegramUsername</a></li>
+        <li>Email: <a href="mailto:wasepayemailcenter@gmail.com">wasepayemailcenter@gmail.com</a></li>
+    </ul>
+
+    <div class="cta">
+        <h2>🚀 Ready to Start?</h2>
+        <p><a href="{% url 'selectpay' %}" target="_blank">Click Here to Invest in WasePay</a></p>
+    </div>
+</div>
+{% endblock %}

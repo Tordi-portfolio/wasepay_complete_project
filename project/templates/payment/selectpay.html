@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+
+{% block title %}Tordi Crypto{% endblock %}
+
+{% block content %}
+
+<style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f5f7fa;
+      color: #333;
+    }
+
+    header {
+      background-color: #1a1a1a;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 28px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background-color: white;
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+      border: 2px solid transparent;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      border-color: #4caf50;
+    }
+
+    .card img {
+      width: 50px;
+      height: 50px;
+      margin-bottom: 10px;
+    }
+
+    .card span {
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    a {
+        text-decoration: none;
+        color: black;
+    }
+
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>💰 Select Cryptocurrency to Deposit</h1>
+</header>
+
+<div class="container">
+  <div class="grid">
+    <a href="{% url 'usdt' %}" onclick="selectCurrency('ETH')">
+        <div class="card">
+            <img src="https://worldvectorlogo.com/logo/tether.svg" alt="USDT" width="50" height="50">
+            <span>DOLLAR (USDT)</span>
+        </div>
+    </a>
+    <a href="{% url 'eth' %}">
+        <div class="card" onclick="selectCurrency('ETH')">
+            <img src="https://cryptologos.cc/logos/ethereum-eth-logo.png?v=026" alt="Ethereum">
+            <span>Ethereum (ETH)</span>
+        </div>
+    </a>
+    <a href="{% url 'solana' %}">
+        <div class="card" onclick="selectCurrency('SOL')">
+            <img src="https://cryptologos.cc/logos/solana-sol-logo.png?v=026" alt="Solana" width="50" height="50">
+          <span>SOLANA (SOL)</span>
+        </div>
+    </a>
+    <a href="{% url 'ton' %}">
+        <div class="card" onclick="selectCurrency('TON')">
+            <img src="https://cryptologos.cc/logos/toncoin-ton-logo.png?v=026" alt="Toncoin" width="50" height="50">
+          <span>TON</span>
+        </div>
+    </a>
+  </div>
+</div>
+
+<script>
+  function selectCurrency(currency) {
+    alert("You selected: " + currency);
+    // You can redirect or trigger form logic here, for example:
+    // window.location.href = "/deposit/" + currency;
+  }
+</script>
+
+{% endblock %}
